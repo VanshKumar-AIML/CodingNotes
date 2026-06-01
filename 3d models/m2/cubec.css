@@ -1,0 +1,90 @@
+/* Body Background Gradient & General Styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: radial-gradient(circle at 60% 40%, #8707ff 20%, #311646 70%, #081229 100%);
+    color: #fff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Cube Scene */
+.cube-section {
+    position: absolute;
+    right: 12vw;
+    top: 20vh;
+    perspective: 1200px;
+}
+.scene {
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
+    perspective: 900px;
+    background: none;
+}
+.cube {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: 60px auto 0;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4,2,0.6,1);
+}
+.cube-face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #fff;
+    box-shadow: 0 0 30px #ff36f99c, 0 0 60px #1f1243cc inset;
+    background: linear-gradient(135deg, #8717ec85 50%, #ff238a80 100%);
+    opacity: 0.93;
+    border-radius: 18px;
+    text-shadow: 0 2px 8px #fff3;
+    backdrop-filter: blur(2px);
+}
+
+/* 3D Placement */
+.cube-face-front  { transform: rotateY(0deg)   translateZ(100px);}
+.cube-face-back   { transform: rotateY(180deg) translateZ(100px);}
+.cube-face-right  { transform: rotateY(90deg)  translateZ(100px);}
+.cube-face-left   { transform: rotateY(-90deg) translateZ(100px);}
+.cube-face-top    { transform: rotateX(90deg)  translateZ(100px);}
+.cube-face-bottom { transform: rotateX(-90deg) translateZ(100px);}
+
+/* Glow Effect Around Cube */
+.scene::before {
+    content: "";
+    position: absolute;
+    top: 54px;
+    left: 44px;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, #b440ffbb 35%, #2c1567d7 75%, transparent 100%);
+    filter: blur(28px);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    .cube-section { right: 2vw; }
+    .intro { left: 2vw; top: 15vh;}
+    .scene { width: 260px; height: 260px;}
+    .cube { width: 150px; height: 150px;}
+    .cube-face { width: 150px; height: 150px;}
+}
+
+/* Remove outline on mouse */
+*:focus { outline: none; }
+
+.intro{
+    min-height: 250px;
+    text-align: center;
+    color:#8036a5;
+    font-size: 125px;
+}
